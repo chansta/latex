@@ -1,0 +1,117 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%Author:			Felix Chan
+%Email:				fmfchan@gmail.com
+%Date Created:		2015.09.22
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{corporate}[2015/09/22] %New Command for Bold symbol requires fcsymbol.sty
+\NeedsTeXFormat{LaTeX2e}
+\RequirePackage{color} 
+\renewcommand{\section}{\@startsection%
+	{section}%
+	{0}%
+	{0mm}%
+	{\baselineskip}%
+	{\baselineskip}%
+    {\normalfont\normalsize\bfseries\color[rgb]{0,0.4,0.7}}%
+	} 
+\DeclareOption{seceqn}{\renewcommand{\theequation}{\thesection.\arabic{equation}}%
+    \renewcommand{\section}{\setcounter{equation}{0}\@startsection%
+        {section}%
+        {0}%
+        {0mm}%
+        {\baselineskip}%
+        {\baselineskip}%
+        {\normalfont\normalsize\bfseries\color[rgb]{0,0.4,0.7}}%
+        } 
+}
+\ProcessOptions
+\RequirePackage{ifthen}
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
+\RequirePackage{graphicx}
+\RequirePackage{natbib}
+\RequirePackage{enumerate}
+%\RequirePackage{fancyheadings}
+\RequirePackage{setspace} 
+\RequirePackage{array}
+\RequirePackage{threeparttable}
+\newtheorem{assumption}{Assumption}
+\newtheorem{proposition}{Proposition}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}{Corollary}
+\newtheorem{lemma}{Lemma}
+\setlength{\oddsidemargin}{4.6mm} 
+\setlength{\voffset}{-5mm}
+\setlength{\topmargin}{2mm}
+\setlength{\headheight}{2mm}
+\setlength{\headsep}{10mm}
+\setlength{\footskip}{20mm}
+\setlength{\textwidth}{155mm}
+\setlength{\textheight}{212mm}
+\def\address#1{\gdef\@address{#1}}
+\def\keywords#1{\gdef\@keywords{#1}}
+\def\JEL#1{\gdef\@JEL{#1}}
+\def\email#1{\gdef\@email{#1}}
+\let\@notemarkc\@empty
+\let\@address\@empty
+\let\@notemark\@empty
+\let\@keywords\@empty
+\renewcommand{\maketitle}{%
+	\thispagestyle{empty}
+	\begin{spacing}{1} %
+    \par\vspace*{30mm}\par
+    \noindent\huge{\color[rgb]{0,0.4,0.8}\@title} \vspace{5mm}\par %
+    \noindent\normalfont\normalsize{\color[rgb]{0,0.4,0.6}\@author} \par %
+    \noindent \normalfont{\color[rgb]{0,0.4,0.6}\@address} \vspace{5mm} \par% 
+    \noindent \normalfont{\color[rgb]{0,0.4,0.6}\@date} \vspace{5mm}\par %
+	%	\normalfont\itshape Email: $\underline{\text{@email}}$ \vspace{5mm}\par %
+	\end{spacing} %
+    \pagebreak
+	}
+    \renewcommand*\refname{\color[rgb]{0,0.2,0.6}{REFERENCES}}
+\newenvironment{exesummary} {% 
+	\thispagestyle{empty}
+	\begin{spacing}{1} %
+	\section*{Executive Summary} %
+	}{%
+	\par\vspace{5mm} %
+    %\noindent \textbf{Keywords:}{\itshape\@keywords}\par\vspace{1mm} %
+	%\noindent \textbf{JEL:}\@JEL
+	\end{spacing} %
+	\pagebreak
+	\pagenumbering{arabic}
+	} 
+\newenvironment{acknow}{%
+	\noindent \section*{ACKNOWLEDGEMENT} %
+	}%
+	{ \par } 
+\renewcommand{\subsection}{\@startsection%
+	{subsection}%
+	{1}%
+	{0mm}%
+	{\baselineskip}%
+	{\baselineskip}%
+	{\normalfont\normalsize} } 
+\renewcommand{\subsubsection}{\@startsection%
+	{subsubsection}%
+	{2}%
+	{0mm}%
+	{\baselineskip}%
+	{\baselineskip}%
+	{\normalfont\normalsize} }
+\newcounter{defcount}
+\newenvironment{definition}[1][]{\ignorespaces\par\noindent\refstepcounter{defcount}{\bfseries Definition \arabic{defcount} {#1}.}}{\par\noindent} 
+\newcounter{examplecount}
+\newenvironment{example}{\ignorespaces\par\noindent\refstepcounter{examplecount}{\bfseries Example \arabic{examplecount}.}}{\par\noindent}
+\newcounter{remarkcount}
+\newenvironment{remark}{\ignorespaces\par\noindent\refstepcounter{remarkcount}{\bfseries Remark \arabic{remarkcount}.}}{\par\noindent}
+\newcounter{algocount}
+\newenvironment{algorithm}[1][]{\ignorespaces\par\noindent\refstepcounter{algocount}{\bfseries Algorithm \arabic{algocount}: {#1} }}{\par\noindent} 
+%\newenvironment{proving}[1][]{\par\noindent {\bfseries Proof {#1}:} }{$\blacksquare$\par\noindent} 
+\newenvironment{proving}[1][]{\par\noindent {\ifthenelse{\equal{#1}{}}{\bfseries Proof:}{\bfseries Proof of {#1}:}}}{$\blacksquare$\par\noindent} 
+\newcounter{appendixcount} 
+\renewcommand{\theappendixcount}{\Alph{appendixcount}}
+\newcommand{\Appendix}[1]{\refstepcounter{appendixcount}\setcounter{equation}{0}\renewcommand{\theequation}{\Alph{appendixcount}.\arabic{equation}}\par\vspace{0.3cm}\noindent{\color[rgb]{0,0.2,0.6}{{\large\bfseries Appendix \Alph{appendixcount}: {#1}}}}\par\vspace{0.5cm}}

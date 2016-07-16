@@ -1,0 +1,131 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+%Author:			Felix Chan
+%Email:				fmfchan@gmail.com
+%Date Created:		2016.01.19
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\ProvidesPackage{cv}[2016/01/19] %New commands for bold symbols can be found in fcsymbol.sty
+\NeedsTeXFormat{LaTeX2e}
+\renewcommand{\section}{\@startsection%
+	{section}%
+	{0}%
+	{0mm}%
+	{\baselineskip}%
+	{\baselineskip}%
+	{\normalfont\normalsize\bfseries}%
+	} 
+\RequirePackage{ifthen}
+\RequirePackage{amsmath}
+\RequirePackage{amsfonts}
+\RequirePackage{amssymb}
+\RequirePackage{amsthm}
+\RequirePackage{graphicx}
+%\RequirePackage{natbib}
+\RequirePackage{enumerate}
+%\RequirePackage{fancyheadings}
+\RequirePackage{setspace} 
+\RequirePackage{array}
+\RequirePackage{threeparttable}
+\RequirePackage{authblk}
+\RequirePackage{bibunits}
+\RequirePackage{color}
+\RequirePackage{titlesec}
+\setlength{\oddsidemargin}{4.6mm} 
+\setlength{\voffset}{-5mm}
+\setlength{\topmargin}{2mm}
+\setlength{\headheight}{2mm}
+\setlength{\headsep}{10mm}
+\setlength{\footskip}{20mm}
+\setlength{\textwidth}{155mm}
+\setlength{\textheight}{212mm}
+\def\keywords#1{\gdef\@keywords{#1}}
+\def\JEL#1{\gdef\@JEL{#1}}
+\def\email#1{\gdef\@email{#1}}
+\newcommand{\phone}[1]{\gdef\@phone{#1}}
+\newcommand{\fax}[1]{\gdef\@fax{#1}}
+\newcommand{\address}[1]{\gdef\@address{#1}}
+\newcommand{\birthplace}[1]{\gdef\@birthplace{#1}}
+\newcommand{\citizen}[1]{\gdef\@citizen{#1}}
+\newcommand{\dob}[1]{\gdef\@dob{#1}}
+\let\@notemarkc\@empty
+\let\@address\@empty
+\let\@notemark\@empty
+\let\@keywords\@empty
+\let\@JEL\@empty
+\let\@phone\@empty
+\let\@fax\@empty
+\let\@birthplace\@empty
+\let\@citzien\@empty
+\let\@dob\@empty
+\renewcommand{\@biblabel}[1]{#1.}
+%\renewcommand*\refname{}
+\titleformat*{\section}{\large\color[rgb]{0.4,0.2,0.4}\bfseries}
+\renewcommand{\maketitle}{%
+    \begin{spacing}{2}%
+        \begin{center}%
+            \huge{\color[rgb]{0,0,1}CURRICULUM VITA}\par
+            \normalfont\large{\color[rgb]{0,0,1}\@author} \par%
+            \normalfont{Last Updated: \today}\par \vspace{0.5cm}
+        \end{center}
+    \end{spacing}
+}
+\newcommand{\personal}{%
+    \section*{Personal Details}%
+    \begin{tabbing}
+    {\bfseries Contact Details} \qquad\qquad \= \quad \= \\
+    Phone: \>\> \@phone\\
+    Fax:\>\> \@fax\\
+    Email: \> \>\@email\\
+    Address: \>\>\@address\\ \\
+    {\bfseries Date of Birth:} \>\> \@dob  \\ \\ 
+    {\bfseries Place of Birth:} \>\> \@birthplace  \\ \\
+    {\bfseries Citizenship:} \>\> \@citizen  \\
+    \end{tabbing}
+}
+
+\newenvironment{journalpub}{%
+    \begin{bibunit}[plainyr] %
+        \renewcommand*\refname{Refereed Journal Publications}
+    }%
+    {\putbib[journal] \end{bibunit} \par}
+
+\newenvironment{conferencepub}{%
+    \begin{bibunit}[plainyr] %
+        \renewcommand*\refname{Refereed Conference Proceedings}
+        }%
+    {\putbib[conference] \end{bibunit} \par}
+
+\newenvironment{bookchappub}{%
+    \begin{bibunit}[plainyr] %
+        \renewcommand*\refname{Book Chapters}
+    }
+{\putbib[bookchap] \end{bibunit} \par} 
+
+\newenvironment{specialissues}{%
+    \begin{bibunit}[plainyr] %
+        \renewcommand*\refname{Edited Special Issues}
+    }
+{\putbib[specialissues] \end{bibunit} \par} 
+
+\newenvironment{proceedings}{%
+    \begin{bibunit}[plainyr] %
+        \renewcommand*\refname{Edited Conference Proceedings Volumes}
+    }
+{\putbib[proceedings] \end{bibunit} \par} 
+
+
+\renewcommand{\subsection}{\@startsection%
+	{subsection}%
+	{1}%
+	{0mm}%
+	{\baselineskip}%
+	{\baselineskip}%
+	{\normalfont\normalsize} } 
+\renewcommand{\subsubsection}{\@startsection%
+	{subsubsection}%
+	{2}%
+	{0mm}%
+	{\baselineskip}%
+	{\baselineskip}%
+	{\normalfont\normalsize} }
+
