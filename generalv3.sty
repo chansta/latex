@@ -46,6 +46,7 @@
 \newtheorem{theorem}{Theorem}
 \newtheorem{corollary}{Corollary}
 \newtheorem{lemma}{Lemma}
+%=====================Replace the below by Geometry====================================%
 \setlength{\oddsidemargin}{4.6mm} 
 \setlength{\voffset}{-5mm}
 \setlength{\topmargin}{2mm}
@@ -54,6 +55,7 @@
 \setlength{\footskip}{20mm}
 \setlength{\textwidth}{155mm}
 \setlength{\textheight}{212mm}
+%======================================================================================%
 \def\keywords#1{\gdef\@keywords{#1}}
 \def\JEL#1{\gdef\@JEL{#1}}
 \def\email#1{\gdef\@email{#1}}
@@ -104,5 +106,6 @@
 %\newenvironment{proving}[1][]{\par\noindent {\bfseries Proof {#1}:} }{$\blacksquare$\par\noindent} 
 \newenvironment{proving}[1][]{\par\noindent {\ifthenelse{\equal{#1}{}}{\bfseries Proof: }{\bfseries Proof of {#1}: }}}{$\blacksquare$\par\noindent} 
 \newcounter{appendixcount} 
+\renewcommand{\theappendixcount}{\Alph{appendixcount}}
 \newcommand{\Appendix}[1]{\vspace{0.3cm}\refstepcounter{appendixcount}\setcounter{equation}{0}\renewcommand{\theequation}{\Alph{appendixcount}.\arabic{equation}}{\large\bfseries Appendix \Alph{appendixcount}: {#1}}\par\vspace{0.5cm}}
 
